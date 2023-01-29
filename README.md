@@ -6,7 +6,7 @@ A collection of data structures based on Go 1.18+ Generics.
 
 - [x] set
 
-- [ ] array
+- [x] array
 
 - [ ] list
 
