@@ -1,0 +1,38 @@
+name: Go
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+      - feature/**
+      - fix/**
+  pull_request:
+    branches:
+      - master
+      - develop
+      - feature/**
+      - fix/**
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: [ "1.18", "1.19" ]
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Go ${{ matrix.go-version }}
+      uses: actions/setup-go@v3
+      with:
+        go-version: ${{ matrix.go-version }}
+        cache: true
+
+    - name: Test
+      run: go mod tidy && go test -v ./...

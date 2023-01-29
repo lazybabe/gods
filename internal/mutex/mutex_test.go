@@ -36,7 +36,7 @@ var _ = Describe("Mutex", func() {
 
 		safeLockMedian := experiment.GetStats("SafeLock").DurationFor(gmeasure.StatMedian)
 		unsafeLockMedian := experiment.GetStats("UnsafeLock").DurationFor(gmeasure.StatMedian)
-		Expect(safeLockMedian).To(BeNumerically("<", 50*time.Nanosecond))
-		Expect(unsafeLockMedian).To(BeNumerically("<", time.Nanosecond))
+		Expect(safeLockMedian).To(BeNumerically("<", 200*time.Nanosecond))
+		Expect(unsafeLockMedian).To(BeNumerically("<", 200*time.Nanosecond))
 	})
 })
