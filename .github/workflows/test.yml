@@ -1,4 +1,4 @@
-name: Go
+name: Test
 
 on:
   push:
@@ -7,12 +7,14 @@ on:
       - develop
       - feature/**
       - fix/**
+      - ci/**
   pull_request:
     branches:
       - master
       - develop
       - feature/**
       - fix/**
+      - ci/**
 
 concurrency:
   group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
@@ -35,4 +37,11 @@ jobs:
         cache: true
 
     - name: Test
-      run: go test -v ./...
+      run: |
+        go test -v -coverprofile=coverage.out -covermode=atomic ./...
+        go tool cover -html=coverage.out -o coverage.html
+
+    - name: Report Coverage
+      uses: codecov/codecov-action@v3
+      with:
+        flags: go-${{ matrix.go-version }}

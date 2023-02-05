@@ -17,6 +17,13 @@ func TestMutex(t *testing.T) {
 }
 
 var _ = Describe("Mutex", func() {
+	It("IsSafe", func() {
+		safeLock := mutex.New(true)
+		unsafeLock := mutex.New(false)
+		Expect(safeLock.IsSafe()).To(BeTrue())
+		Expect(unsafeLock.IsSafe()).To(BeFalse())
+	})
+
 	It("Benchmark", Serial, func() {
 		safeLock := mutex.New(true)
 		unsafeLock := mutex.New(false)
