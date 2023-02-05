@@ -17,6 +17,13 @@ func TestRwMutex(t *testing.T) {
 }
 
 var _ = Describe("RwMutex", func() {
+	It("IsSafe", func() {
+		safeLock := rwmutex.New(true)
+		unsafeLock := rwmutex.New(false)
+		Expect(safeLock.IsSafe()).To(BeTrue())
+		Expect(unsafeLock.IsSafe()).To(BeFalse())
+	})
+
 	It("Benchmark", Serial, func() {
 		safeLock := rwmutex.New(true)
 		unsafeLock := rwmutex.New(false)
