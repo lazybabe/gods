@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/qinyuguang/gods/internal/rwmutex"
+	"github.com/lazybabe/gods/internal/rwmutex"
 )
 
 // Set is a unordered collection of unique members.

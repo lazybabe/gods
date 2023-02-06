@@ -5,7 +5,7 @@ import (
 	"math"
 	"sort"
 
-	"github.com/qinyuguang/gods/internal/rwmutex"
+	"github.com/lazybabe/gods/internal/rwmutex"
 )
 
 type Array[T comparable] struct {
