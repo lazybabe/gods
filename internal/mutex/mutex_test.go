@@ -8,7 +8,7 @@ import (
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/gmeasure"
 
-	"github.com/qinyuguang/gods/internal/mutex"
+	"github.com/lazybabe/gods/internal/mutex"
 )
 
 func TestMutex(t *testing.T) {

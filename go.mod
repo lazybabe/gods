@@ -1,4 +1,4 @@
-module github.com/qinyuguang/gods
+module github.com/lazybabe/gods
 
 go 1.18
 

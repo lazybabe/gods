@@ -6,7 +6,7 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/qinyuguang/gods/set"
+	"github.com/lazybabe/gods/set"
 )
 
 func TestSet(t *testing.T) {
